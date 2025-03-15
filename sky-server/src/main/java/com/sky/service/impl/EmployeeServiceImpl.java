@@ -113,4 +113,20 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     }
 
+    /**
+     * 根据给定的状态启用或禁用指定员工账号。
+     *
+     * @param status 员工状态，0表示禁用，1表示启用
+     * @param id     员工ID
+     * @return 返回操作结果
+     */
+    @Override
+    public void startOrStop(Integer status, long id) {
+        Employee employee = Employee.builder()
+                .status(status)
+                .id(id)
+                .build();
+        employeeMapper.update(employee);
+    }
+
 }
